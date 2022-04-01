@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import SinglePostComponent from "./singlePostComponent/singlePostComponent";
 import NewPostComponent from "./newPostComponent/newPostComponent";
+import apiUrl from "../apiconfig";
 
 const GymPostContainer = () => {
     const [gymPictures, setGymPictures] = useState([])
     const [newItemServiceError, setNewItemServiceError] = useState("")
     const createNewPost= async (newPost) => {
-        const apiResponse = await fetch("http://localhost:3001/gym", {
+        const apiResponse = await fetch(`${apiUrl}/gym`, {
             method: "POST",
             body: JSON.stringify(newPost),
             headers: {
@@ -23,7 +24,7 @@ const GymPostContainer = () => {
     }
     const deletePosts = async (idToDelete) => {
         try{
-            const apiResponse = await fetch(`http://localhost:3001/gym/${idToDelete}`, {
+            const apiResponse = await fetch(`${apiUrl}/gym/${idToDelete}`, {
             method: "DELETE"
         })
         const parsedResponse = await apiResponse.json()
@@ -40,7 +41,7 @@ const GymPostContainer = () => {
     }
     const getPosts = async () => {
         try{
-            const gymPictures = await fetch("http://localhost:3001/gym")
+            const gymPictures = await fetch(`${apiUrl}/gym`)
             const parsedGymPictures = await gymPictures.json();
             setGymPictures(parsedGymPictures.data)
         }catch(err){
@@ -49,7 +50,7 @@ const GymPostContainer = () => {
         }
     }
     const updatePost = async (idToUpdate, gymPostToUpdate) => {
-        const apiResponse = await fetch(`http://localhost:3001/gym/${idToUpdate}`, {
+        const apiResponse = await fetch(`${apiUrl}/gym/${idToUpdate}`, {
             method: "PUT",
             body: JSON.stringify(gymPostToUpdate),
             headers: {
