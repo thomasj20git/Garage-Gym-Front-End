@@ -79,10 +79,13 @@ const GymPostContainer = () => {
                 <h2>Post your gym!</h2>
                     <NewPostComponent newItemServiceError={newItemServiceError} createNewPost={createNewPost}></NewPostComponent>
                 </div>
+    
                 <div id="all-the-pics">
+                    <div>
                     {gymPictures.map((gymPicture)=>{
                         return <SinglePostComponent key={gymPicture._id} gymPicture={gymPicture} deletePosts={deletePosts} updatePost={updatePost}></SinglePostComponent>
-                    })}
+                        })}
+                    </div>
                 </div>
             </div> 
         </div>

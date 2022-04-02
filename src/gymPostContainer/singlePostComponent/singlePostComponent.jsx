@@ -7,6 +7,7 @@ const SinglePostComponent = (props) => {
     const [updatePost, setUpdatePost] = useState({
         gymName: props.gymPicture.gymName,
         gymEquipment: props.gymPicture.gymEquipment,
+        gymImage: props.gymPicture.gymImage,
         _id: props.gymPicture._id
     })
     const toggleShowing = () =>{
@@ -37,16 +38,18 @@ const SinglePostComponent = (props) => {
             }}>Delete this post</button>
             {
                 showing ?
-                <div>
-                <button onClick={toggleShowing}>X</button>
-                    <form onSubmit={submitUpdatePost}>
-                        {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>}
-                        Gym Name: <input onChange={handleInputChange} type="text" name="gymName" value={updatePost.gymName}/>
-                        Equipment: <input onChange={handleInputChange} type="text" name="gymEquipment" value={updatePost.gymEquipment}/>
-                        Image URL: <input onChange={handleInputChange} type="text" name="gymPicture" value={updatePost.gymImage}/>
-                        <button type="submit">Reupload Post!</button>
-                    </form>
-                </div>
+                <div id="modal-background">
+                    <div id="modal-container">
+                        <button onClick={toggleShowing}>X</button>
+                        <form onSubmit={submitUpdatePost}>
+                            {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>}
+                            Gym Name: <input className="edit-input" onChange={handleInputChange} type="text" name="gymName" value={updatePost.gymName}/>
+                            Equipment: <input className="edit-input" onChange={handleInputChange} type="text" name="gymEquipment" value={updatePost.gymEquipment}/>
+                            Image URL: <input className="edit-input" onChange={handleInputChange} type="text" name="gymPicture" value={updatePost.gymImage}/>
+                            <button type="submit">Reupload Post!</button>
+                        </form>
+                    </div>
+                    </div>
                 :
                 <button onClick={toggleShowing}>Edit This Post</button>
 

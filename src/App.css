@@ -10,8 +10,8 @@
   border: 1px solid black;
   margin: 25px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  width: 300px;
-  height: 400px;
+  width: 400px;
+  height: 500px;
 }
 #posts-flex-container{
   display: flex;
@@ -38,7 +38,7 @@
 
 .App-header {
   background-color: #28282B;
-  min-height: 25vh;
+  min-height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,6 +77,7 @@ button{
   button:hover{
   color:#000000;
   background-color:#FFFFFF;
+  cursor: grab;
   }
   input{
     display: block;
@@ -89,10 +90,43 @@ button{
     padding: 5px;
 
   }
-  /* #image-div{
-    width: 100%;
-  } */
+  #image-div{
+    overflow: hidden;
+  }
   .images{
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+  }
+  .footer {
+    align-items: center;
+    background-color: #2B2D2E;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 8vh;
+    justify-content: center;
+    /* position: fixed;  */
+    bottom: 0;
+    width: 100%;
+  }
+
+
+  #modal-background{
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100vw;
+    height: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  #modal-container{
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    margin-top: 100px;
   }

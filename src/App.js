@@ -11,6 +11,9 @@ function App() {
       <main className='main'>
       <GymPostContainer></GymPostContainer>
       </main>
+      <footer className='footer'>
+        
+      </footer>
       
     </div>
   );
