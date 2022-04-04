@@ -28,7 +28,7 @@ const SinglePostComponent = (props) => {
     }
     return(
         <div className="index-single-post">
-            <h3>Gym Name: {props.gymPicture.gymName}</h3>
+            <h3>Picture Name: {props.gymPicture.gymName}</h3>
             <div id="image-div">
                 <img className="images" src={props.gymPicture.gymImage}></img>
             </div>
@@ -49,7 +49,7 @@ const SinglePostComponent = (props) => {
                             <button type="submit">Reupload Post!</button>
                         </form>
                     </div>
-                    </div>
+                </div>
                 :
                 <button onClick={toggleShowing}>Edit This Post</button>
 

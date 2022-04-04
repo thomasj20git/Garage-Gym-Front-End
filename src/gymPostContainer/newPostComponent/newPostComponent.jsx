@@ -47,17 +47,19 @@ const NewPostComponent = (props) => {
         <>
         {
             showing ?
-            <div id="new-post-form">
-                <button onClick={toggleShowing}>X</button>
-                <form onSubmit={submitNewPost}>
-                    {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>}
-                    {props.newItemServiceError ? <p className="form-error">{props.newItemServiceError}</p> : null}
-                    Gym Name: <input onChange={handleInputChange} type="text" name="gymName" value={newPost.gymName}/>
-                    Equipment: <input onChange={handleInputChange} type="text" name="gymEquipment" value={newPost.gymEquipment}/>
-                    Image URL: <input onChange={handleInputChange} type="text" name="gymImage" value={newPost.gymImage}/>
-                    <button type="submit">Share Your Post!</button>
-                </form>
-            </div>
+            <div id="modal-background">
+                    <div id="modal-container">
+                        <button onClick={toggleShowing}>X</button>
+                        <form onSubmit={submitNewPost}>
+                            {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>}
+                            Gym Name: <input className="edit-input" onChange={handleInputChange} type="text" name="gymName" value={newPost.gymName}/>
+                            Equipment: <input className="edit-input" onChange={handleInputChange} type="text" name="gymEquipment" value={newPost.gymEquipment}/>
+                            Image URL: <input className="edit-input" onChange={handleInputChange} type="text" name="gymImage" value={newPost.gymImage}/>
+                            <button type="submit">Upload Post!</button>
+                        </form>
+                    </div>
+                </div>
+           
         :
         <button onClick={toggleShowing}>Create New Post</button>
         }

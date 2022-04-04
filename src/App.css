@@ -73,10 +73,11 @@ button{
   color:#28282B;
   text-align:center;
   transition: all 0.2s;
+  border-radius: 100px;
   }
   button:hover{
   color:#000000;
-  background-color:#FFFFFF;
+  background-color: darkgray;
   cursor: grab;
   }
   input{
@@ -102,14 +103,16 @@ button{
   .footer {
     align-items: center;
     background-color: #2B2D2E;
-    color: white;
+    /* color: white; */
     display: flex;
     flex-direction: column;
     min-height: 8vh;
     justify-content: center;
-    /* position: fixed;  */
+    position: fixed; 
     bottom: 0;
     width: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 
 
