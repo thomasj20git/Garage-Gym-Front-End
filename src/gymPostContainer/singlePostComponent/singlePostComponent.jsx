@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+// import {Link} from "react-router-dom";
 
 const SinglePostComponent = (props) => {
     const [showing, setShowing] = useState(false)
@@ -43,9 +43,10 @@ const SinglePostComponent = (props) => {
                         <button onClick={toggleShowing}>X</button>
                         <form onSubmit={submitUpdatePost}>
                             {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>}
-                            Gym Name: <input className="edit-input" onChange={handleInputChange} type="text" name="gymName" value={updatePost.gymName}/>
-                            Equipment: <input className="edit-input" onChange={handleInputChange} type="text" name="gymEquipment" value={updatePost.gymEquipment}/>
+                            Image Name: <input className="edit-input" onChange={handleInputChange} type="text" name="gymName" value={updatePost.gymName}/>
+                            Equipment Link: <input className="edit-input" onChange={handleInputChange} type="text" name="gymEquipment" value={updatePost.gymEquipment}/>
                             Image URL: <input className="edit-input" onChange={handleInputChange} type="text" name="gymPicture" value={updatePost.gymImage}/>
+
                             <button type="submit">Reupload Post!</button>
                         </form>
                     </div>

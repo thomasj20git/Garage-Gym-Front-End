@@ -1,19 +1,24 @@
 
 import './App.css';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import GymPostContainer from './gymPostContainer/gymPostContainer';
+import WorkoutPage from './workoutLogContainer/workoutLogContainer';
+import UserContainer from './userContainer/usercontainer';
+import LoginContainer from './userContainer/userlogin';
+// import { router } from '../../../../Back-End/controllers/gymController';
 
 function App() {
   return (
-    <div className="App">
-      <header className='App-header'>
-      <h1>Thomas' Gym</h1>
-      </header>
-      <main className='main'>
-      <GymPostContainer></GymPostContainer>
-      </main>
-      
-      
-    </div>
+
+    <Router>
+      <Routes>
+        <Route path='/' element={<GymPostContainer></GymPostContainer>}/>
+        <Route path='/workout-log' element={<WorkoutPage></WorkoutPage>}/>
+        <Route path='/users' element={<UserContainer></UserContainer>}/>
+        <Route path='/login' element={<LoginContainer></LoginContainer>}/>
+      </Routes>
+    </Router>
+
   );
 }
 

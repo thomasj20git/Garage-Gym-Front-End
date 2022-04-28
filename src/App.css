@@ -12,12 +12,24 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 400px;
   height: 500px;
+  background-color: white;
 }
+.index-single-workout{
+  border: 1px solid black;
+  margin: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 500px;
+  height: 300px;
+  background-color: white;
+}
+
 #posts-flex-container{
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
   align-items: center;
+  margin-bottom: 50px;
+  background-color: white;
 }
 #create-new-post{
   border: 1px solid black;
@@ -26,10 +38,6 @@
   width: 300px;
   
 }
-#all-the-pics{
-  display: flex;
-  flex-direction: column;
-}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -37,14 +45,15 @@
 }
 
 .App-header {
-  background-color: #28282B;
+  /* background-color: #324851; */
+  background-color: white;
   min-height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #324851 ;
 }
 
 .App-link {
@@ -75,12 +84,12 @@ button{
   transition: all 0.2s;
   border-radius: 100px;
   }
-  button:hover{
+button:hover{
   color:#000000;
   background-color: darkgray;
   cursor: grab;
-  }
-  input{
+}
+input{
     display: block;
     width: 50%;
     border: 1px solid black;
@@ -90,33 +99,32 @@ button{
     margin-bottom: 10px;
     padding: 5px;
 
-  }
-  #image-div{
+}
+#image-div{
     overflow: hidden;
-  }
-  .images{
+}
+.images{
     object-fit: contain;
-    width: 100%;
+    width: 90%;
     max-height: 300px;
     overflow: hidden;
-  }
-  .footer {
-    align-items: center;
-    background-color: #2B2D2E;
-    /* color: white; */
-    display: flex;
-    flex-direction: column;
-    min-height: 8vh;
-    justify-content: center;
-    position: fixed; 
-    bottom: 0;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
+}
+.footer {
+  align-items: center;
+  background-color: #324851;
+  display: flex;
+  flex-direction: column;
+  min-height: 8vh;
+  justify-content: center;
+  position: fixed; 
+  bottom: 0;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
 
 
-  #modal-background{
+#modal-background{
     background-color: rgba(0, 0, 0, 0.6);
     width: 100vw;
     height: 100vw;
@@ -126,10 +134,10 @@ button{
     display: flex;
     justify-content: center;
     align-items: flex-start;
-  }
-  #modal-container{
+}
+#modal-container{
     background-color: white;
     width: 300px;
     height: 300px;
     margin-top: 100px;
-  }
+}

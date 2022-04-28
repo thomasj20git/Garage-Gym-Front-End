@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import SinglePostComponent from "./singlePostComponent/singlePostComponent";
 import NewPostComponent from "./newPostComponent/newPostComponent";
 import apiUrl from "../apiconfig";
-import ProfilePicComponent from "./profilePicComponent/profilePicComponent";
+import {Link, useNavigate} from "react-router-dom";
+import jwt_decode from 'jwt-decode'
 
 const GymPostContainer = () => {
     const [gymPictures, setGymPictures] = useState([])
-    const [profilePicture, setProfilePicture] = useState([])  
     const [newItemServiceError, setNewItemServiceError] = useState("")
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const createNewPost= async (newPost) => {
         const apiResponse = await fetch(`${apiUrl}/gym`, {
             method: "POST",
@@ -23,23 +24,7 @@ const GymPostContainer = () => {
         }else{
             setNewItemServiceError(parsedResponse.data)
         }
-    }
-    const createNewProfilePicture = async (newProfilePic) => {
-        const apiResponse = await fetch(`${apiUrl}/gym`, {
-            method: "POST",
-            body: JSON.stringify(newProfilePic),
-            headers: {
-                "Content-type": "application/json"
-            }
-        })
-        const parsedResponse = await apiResponse.json()
-        console.log(parsedResponse)
-        if(parsedResponse.success){
-            setProfilePicture([parsedResponse.data, ...profilePicture])
-        }else{
-            setNewItemServiceError(parsedResponse.data)
-        }
-    }
+    } 
     const deletePosts = async (idToDelete) => {
         try{
             const apiResponse = await fetch(`${apiUrl}/gym/${idToDelete}`, {
@@ -59,8 +44,13 @@ const GymPostContainer = () => {
     }
     const getPosts = async () => {
         try{
-            const gymPictures = await fetch(`${apiUrl}/gym`)
+            const gymPictures = await fetch(`${apiUrl}/gym`, {
+                headers: {
+                    'x-access-token': localStorage.getItem('token')
+                }
+            })
             const parsedGymPictures = await gymPictures.json();
+            console.log(parsedGymPictures)
             setGymPictures(parsedGymPictures.data)
         }catch(err){
             console.log(err)
@@ -84,41 +74,72 @@ const GymPostContainer = () => {
         }
   
     }
+    const getUser = async () => {
+        
+    }
     
-    useEffect(()=>{getPosts()}, [])
+    // useEffect(()=>{getPosts()}, [])
     // useEffect(getPosts, [])
     // const listItems = gymPictures.gymEquipment
     // console.log(listItems)
+
+    const history = useNavigate()
+
+    useEffect(()=>{
+        const token = localStorage.getItem('token')
+        if(token){
+            console.log("token found")
+            const user = jwt_decode(token)
+            if(!user){
+                localStorage.removeItem('token')
+                history.replace('/login')
+            }else{
+                setIsLoggedIn(true)
+                getPosts()}
+            }
+        }
+        ,[])
+    
+    const logOut = async (e) =>{
+        e.preventDefault()
+        setIsLoggedIn(true)
+        localStorage.clear()
+        history('/login')
+    }
+
     return (
-        <div>
-            <div id="profile-pic-div">
-            <div id="create-profile-pic">
-                <h2>Add profile picture here!</h2>
-                    <ProfilePicComponent newItemServiceError={newItemServiceError} createNewProfilePicture={createNewProfilePicture}></ProfilePicComponent>
-                </div>
+        <div className="App">
+           {
+            isLoggedIn ?
+            <>
+            <header className='App-header'>
+                <h1>Share Pictures Here!</h1>
+            </header>
+            <div>
+                <button onClick={logOut}>log out</button>
             </div>
-            
-            <div id="posts-flex-container">
-                <div id="all-the-pics">
-                    <div>
+            <div id="posts-flex-container"> 
                     {gymPictures.map((gymPicture)=>{
                         return <SinglePostComponent key={gymPicture._id} gymPicture={gymPicture} deletePosts={deletePosts} updatePost={updatePost}></SinglePostComponent>
-                        })}
-                    </div>
-                </div>
-                <footer className='footer'>
-                <div>
-                    <button>Explore</button>
+                    })}    
+            </div> 
+            </>
+            :
+            <div>you need to log in</div>
+            
+
+           }
+            <footer className='footer'>
+                <div id="wishlist-button-footer">
+                    <Link to="/users"><button>Explore</button></Link>
                 </div>
                 <div id="create-new-post-footer">
                     <NewPostComponent newItemServiceError={newItemServiceError} createNewPost={createNewPost}></NewPostComponent>
                 </div>
                 <div id="wishlist-button-footer">
-                    <button>Wishlist</button>
+                    <Link to="/workout-log"><button>Workout Log</button></Link>
                 </div>
-
-                </footer>
-            </div> 
+            </footer>
         </div>
     )
 }
