@@ -74,9 +74,9 @@ const GymPostContainer = () => {
         }
   
     }
-    const getUser = async () => {
-        
-    }
+    // const getUser = async () => {
+
+    // }
     
     // useEffect(()=>{getPosts()}, [])
     // useEffect(getPosts, [])
@@ -131,7 +131,7 @@ const GymPostContainer = () => {
            }
             <footer className='footer'>
                 <div id="wishlist-button-footer">
-                    <Link to="/users"><button>Explore</button></Link>
+                    <Link to="/users"><button>Create Account/Log In</button></Link>
                 </div>
                 <div id="create-new-post-footer">
                     <NewPostComponent newItemServiceError={newItemServiceError} createNewPost={createNewPost}></NewPostComponent>

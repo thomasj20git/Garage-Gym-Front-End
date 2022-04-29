@@ -10,7 +10,7 @@ const LoginContainer = () => {
 
     const registerUser = async (e) => {
         e.preventDefault()
-        const response = await fetch("http://localhost:3001/user/login", {
+        const response = await fetch(`${apiUrl}/user/login`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"

@@ -53,7 +53,7 @@ const NewPostComponent = (props) => {
                             {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>}
                             Picture Name: <input className="edit-input" onChange={handleInputChange} type="text" name="gymName" value={newPost.gymName}/>
                             Equipment Link: <input className="edit-input" onChange={handleInputChange} type="text" name="gymEquipment" value={newPost.gymEquipment}/>
-                            Image URL: <input className="edit-input" onChange={handleInputChange} type="file" name="gymImage" value={newPost.gymImage}/>
+                            Image URL: <input className="edit-input" onChange={handleInputChange} type="text" name="gymImage" value={newPost.gymImage}/>
                             <button type="submit">Upload Post!</button>
                         </form>
                     </div>

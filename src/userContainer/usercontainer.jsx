@@ -10,7 +10,7 @@ const UserContainer = () => {
 
     const registerUser = async (e) => {
         e.preventDefault()
-        const response = await fetch("http://localhost:3001/user/register", {
+        const response = await fetch(`${apiUrl}/user/register`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
